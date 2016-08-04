@@ -1,0 +1,19 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:camel="http://camel.apache.org/schema/spring" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <camel:routeContext id="com.backbase.portal.integration.service.exercise01"
+        xmlns="http://camel.apache.org/schema/spring">
+        <route id="com.backbase.training.exercise01" streamCache="true">
+            <from uri="restlet:/player/register?restletMethods=POST&amp;restletBinding=#queryStringToHeadersRestletBinding"/>
+
+            <log message="headers: ${headers}\nbody: ${body}" loggingLevel="DEBUG"/>
+            <removeHeaders pattern="CamelHttp*" excludePattern="CamelHttpMethod"/>
+
+            <to uri="http://localhost:9999/training-server/rest/player"/>
+            <log message="headers: ${headers}\nbody: ${body}" loggingLevel="DEBUG"/>
+        </route>
+    </camel:routeContext>
+</beans>
