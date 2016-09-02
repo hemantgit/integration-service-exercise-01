@@ -33,7 +33,8 @@ You must have the Training Server up and running. Here you can find the github p
 ### Build & Run
 
 - You must restart your portal server if the application is already running. 
-- Test the route execution by using a REST client app (e.g. Postman) or your browser.
+- Test the route execution by using a REST client app (e.g. Postman)
+- Example:
 
 ```javascript
 POST http://localhost:7777/portalserver/services/rest/player/register
