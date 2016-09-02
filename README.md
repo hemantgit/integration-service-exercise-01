@@ -32,7 +32,7 @@ You must have a CXP project configured in your machine before performing this ex
 
 - You must restart your portal server if the application is already running. 
 - Test the route execution by using a REST client app (e.g. Postman) or your browser.
-	```json
+	```javascript
 {
         "username" : "Edsger",
         "fullname" : "Edsger Dijkstra",
