@@ -4,6 +4,8 @@ This project shows an example of a route that call a rest service using the Spri
 ## Prerequisites
 You must have a CXP project configured in your machine before performing this exercise. If you do not have one, please follow the instructions on the following site: https://my.backbase.com/docs/how-to-guides/getting-your-first-launchpad-based-portal-set-up/
 
+You must have the Training Server up and running. Here you can find the github page for the training-server project: https://github.com/Backbase/training-server
+
 ### Installation & Configuration
 
 - Copy **integration-service-exercise-01** into the **services** folder of your project. You can use the git command to clone the project: ```git clone https://github.com/marciofk/integration-service-exercise-01.git```
