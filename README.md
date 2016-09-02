@@ -38,9 +38,9 @@ POST http://localhost:7777/portalserver/services/rest/player/register
 {
    "username" : "Edsger",
    "fullname" : "Edsger Dijkstra",
-   "password" : "123",
+   "password" : "dijkstra123",
    "emailAddress" : "dijkstra@gmail.com",
-   "birthDay" : "1902-07-31",
+   "birthDay" : "1930-05-11",
    "firstName" : "Edsger",
    "lastName" : "Dijkstra"
 }	
