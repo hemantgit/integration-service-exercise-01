@@ -31,4 +31,24 @@ You must have a CXP project configured in your machine before performing this ex
 ### Build & Run
 
 - You must restart your portal server if the application is already running. 
-- Test the route execution by using a REST client app (e.g. Postman) or your browser. 
+- Test the route execution by using a REST client app (e.g. Postman) or your browser.
+	```json
+{
+        "username" : "Edsger",
+        "fullname" : "Edsger Dijkstra",
+        "password" : "123",
+        "emailAddress" : "dijkstra@gmail.com",
+        "birthDay" : "1902-07-31",
+        "firstName" : "Edsger",
+        "lastName" : "Dijkstra"
+}	
+	``` 
+
+
+ 
+
+
+
+
+
+
