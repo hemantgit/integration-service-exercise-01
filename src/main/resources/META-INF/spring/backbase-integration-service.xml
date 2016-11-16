@@ -4,6 +4,10 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
+    <bean id="exception" class="java.lang.IllegalStateException" scope="prototype">
+        <constructor-arg index="0" value="Exceptional flow"/>
+    </bean>
+
     <camel:routeContext id="com.backbase.portal.integration.service.exercise01"
         xmlns="http://camel.apache.org/schema/spring">
         <route id="com.backbase.training.exercise01" streamCache="true">
@@ -12,8 +16,26 @@
             <log message="headers: ${headers}\nbody: ${body}" loggingLevel="DEBUG"/>
             <removeHeaders pattern="CamelHttp*" excludePattern="CamelHttpMethod"/>
 
-            <to uri="http://localhost:9999/training-server/rest/player"/>
-            <log message="headers: ${headers}\nbody: ${body}" loggingLevel="DEBUG"/>
+            <to uri="http://localhost:9999/training-server/rest/player?throwExceptionOnFailure=false"/>
+
+            <choice>
+                <when>
+                    <simple>${header.CamelHttpResponseCode} == 200</simple>
+                    <log message="normal flow" loggingLevel="DEBUG"/>
+                </when>
+                <when>
+                    <simple>${header.CamelHttpResponseCode} == 400 and ${body} == "Player Already Exists"</simple>
+                    <setBody>
+                        <simple>{ "errorCode" : ${header.CamelHttpResponseCode}, "message" : "${body}" }</simple>
+                    </setBody>
+                    <log message="alternative flow (player already exists" loggingLevel="DEBUG"/>
+                </when>
+                <otherwise>
+                    <log message="exceptional flow" loggingLevel="DEBUG"/>
+                    <throwException ref="exception" />
+                </otherwise>
+            </choice>
+
         </route>
     </camel:routeContext>
 </beans>
